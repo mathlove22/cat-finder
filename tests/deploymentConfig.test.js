@@ -11,6 +11,7 @@ describe("deployment config", () => {
   test("deploys the built game to GitHub Pages", () => {
     const workflow = readFileSync(".github/workflows/deploy.yml", "utf8");
 
+    expect(workflow).toContain("actions/configure-pages@v5");
     expect(workflow).toContain("actions/upload-pages-artifact@v3");
     expect(workflow).toContain("actions/deploy-pages@v4");
     expect(workflow).toContain("run: npm test");
